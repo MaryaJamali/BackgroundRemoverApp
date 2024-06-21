@@ -47,3 +47,11 @@ class BackgroundRemoverApp:
         # Create labels to display messages and status
         self.output_label = tk.Label(self.root, text="", font=("Arial", 12), fg="blue", bg="white")
         self.output_label.pack()  # Pack the label
+        
+    # Function to select the input image
+    def select_image(self):
+        # Open the file selection window
+        self.input_image_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.jpg;*.png")])
+        if self.input_image_path:  # If a path is selected
+            # Display the name of the selected file
+            self.output_label.config(text=f"Selected image: {os.path.basename(self.input_image_path)}")
