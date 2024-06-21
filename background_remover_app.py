@@ -55,3 +55,39 @@ class BackgroundRemoverApp:
         if self.input_image_path:  # If a path is selected
             # Display the name of the selected file
             self.output_label.config(text=f"Selected image: {os.path.basename(self.input_image_path)}")
+                # Function to remove the background and display the image
+    def remove_and_display(self):
+        if self.input_image_path:  # If an image is selected
+            try:
+                with open(self.input_image_path, "rb") as f_in:
+                    image_data = f_in.read()  # Read selected image data
+                output_data = remove(image_data)  # Remove image background
+
+                self.output_image_path = "output_image.png"  # Save the output image to a file
+                with open(self.output_image_path, "wb") as f_out:
+                    f_out.write(output_data)
+
+                # Save the output image to a file
+                img = Image.open(self.output_image_path)
+                if self.mode_var.get() == "gray":  # If black and white mode is selected
+                    img = ImageOps.grayscale(img)  # Convert the image to black and white
+
+                # Change the size of the image to display in the window
+                img = img.resize((400, 300), Image.ANTIALIAS)
+
+                # Change the size of the image to display in the window
+                img = ImageTk.PhotoImage(img)
+                if hasattr(self, "img_label"):  # If the image label exists
+                    self.img_label.config(image=img)  # Set the label image
+                    self.img_label.image = img  # Save the image reference
+                else:
+                    self.img_label = tk.Label(self.image_frame, image=img, bg="white")  # create new label with image
+                    self.img_label.image = img  # Save the image reference
+                    self.img_label.pack()  # Pack the label
+
+            except Exception as e:  # If an error occurs
+                # Show error message
+                messagebox.showerror("Error", f"Error removing image background:\n{str(e)}")
+        else:
+            # Display warning message if no image is selected
+            messagebox.showwarning("Warning", "Please select an image first.")
