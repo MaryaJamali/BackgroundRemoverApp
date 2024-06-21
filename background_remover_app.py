@@ -17,3 +17,16 @@ class BackgroundRemoverApp:
 
         self.mode_var = StringVar()  # Create a StringVar variable to store the selected mode (color or black and white)
         self.mode_var.set("color")  # Set the default mode to color
+
+        # Create a frame to display the image
+        self.image_frame = tk.Frame(self.root, bg="white", bd=2, relief=tk.SUNKEN)
+        self.image_frame.pack(pady=20)  # Pack the frame with a distance of 20 pixels from the top
+
+        # Create a label for the image selection command
+        self.label = tk.Label(self.root, text="Please select your input image:", font=("Arial", 14), bg="white")
+        self.label.pack()  # Label packing
+
+        # Create a button to select an image
+        self.select_button = tk.Button(self.root, text="Select Image", command=self.select_image, font=("Arial", 12),
+                                       bg="#4CAF50", fg="black")
+        self.select_button.pack(pady=10)  # Pack the button 10 pixels from the top
