@@ -1,3 +1,4 @@
+import tkinter as tk  # Import the tkinter library to create a graphical user interface
 from tkinter import filedialog, messagebox, Radiobutton, StringVar  # Importing utilities from tkinter
 from PIL import Image, ImageTk, ImageOps  # Import image processing tools from PIL
 from rembg import remove  # Import the rembg library to remove the image background
@@ -47,7 +48,7 @@ class BackgroundRemoverApp:
         # Create labels to display messages and status
         self.output_label = tk.Label(self.root, text="", font=("Arial", 12), fg="blue", bg="white")
         self.output_label.pack()  # Pack the label
-        
+
     # Function to select the input image
     def select_image(self):
         # Open the file selection window
@@ -55,7 +56,8 @@ class BackgroundRemoverApp:
         if self.input_image_path:  # If a path is selected
             # Display the name of the selected file
             self.output_label.config(text=f"Selected image: {os.path.basename(self.input_image_path)}")
-                # Function to remove the background and display the image
+
+    # Function to remove the background and display the image
     def remove_and_display(self):
         if self.input_image_path:  # If an image is selected
             try:
@@ -92,7 +94,12 @@ class BackgroundRemoverApp:
             # Display warning message if no image is selected
             messagebox.showwarning("Warning", "Please select an image first.")
 
+
 if __name__ == "__main__":
     root = tk.Tk()  # Create the root tkinter object
     app = BackgroundRemoverApp(root)  # Create the app object with the root window
     root.mainloop()   # Start the tkinter main loop
+
+# Name of the programmer: Maryam Jamali
+# Email address: m.jamali16@yahoo.com
+# GitHub address: https://github.com/MaryaJamali
