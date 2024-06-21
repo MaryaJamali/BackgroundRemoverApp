@@ -5,7 +5,7 @@ import os  # Import the os library to work with the file system
 
 
 class BackgroundRemoverApp:
- def __init__(self, root):
+    def __init__(self, root):
         self.root = root
         self.root.title("Remove image background")  # Set the title of the main window
         self.root.geometry("600x400")  # Set window size
@@ -38,3 +38,12 @@ class BackgroundRemoverApp:
         self.gray_radio = Radiobutton(self.root, text="Remove background and display black and white image",
                                       variable=self.mode_var, value="gray", font=("Arial", 12), bg="white")
         self.gray_radio.pack(anchor="center", padx=20)  # Align to center with 20 pixels from left and right
+
+        # Create button to perform background removal operation
+        self.remove_button = tk.Button(self.root, text="Run the program", command=self.remove_and_display,
+                                       font=("Arial", 12), bg="#4CAF50", fg="black")
+        self.remove_button.pack(pady=20)  # pack the button with a distance of 20 pixels from the top
+
+        # Create labels to display messages and status
+        self.output_label = tk.Label(self.root, text="", font=("Arial", 12), fg="blue", bg="white")
+        self.output_label.pack()  # Pack the label
