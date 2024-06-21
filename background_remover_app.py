@@ -91,3 +91,8 @@ class BackgroundRemoverApp:
         else:
             # Display warning message if no image is selected
             messagebox.showwarning("Warning", "Please select an image first.")
+
+if __name__ == "__main__":
+    root = tk.Tk()  # Create the root tkinter object
+    app = BackgroundRemoverApp(root)  # Create the app object with the root window
+    root.mainloop()   # Start the tkinter main loop
