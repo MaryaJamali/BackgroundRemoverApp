@@ -13,7 +13,7 @@ The Background Remover App is a simple graphical user interface (GUI) tool desig
 🔘 rembg<br>
 ## Installation
 1. Clone the repository : ``` git clone https://github.com/MaryaJamali/BackgroundRemoverApp.git```
-2. Move to the project directory : ```cd background_remover_app```
+2. Move to the project directory : ```cd BackgroundRemoverApp```
 3. Install the required packages : ```pip install -r requirements.txt```
 4. Run the program
 ## Using the application
